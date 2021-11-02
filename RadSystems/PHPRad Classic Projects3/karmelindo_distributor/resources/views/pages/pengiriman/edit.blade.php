@@ -1,0 +1,177 @@
+@inject('comp_model', 'App\Models\ComponentsData')
+<?php
+?>
+@extends($layout)
+@section('content')
+<section class="page" data-page-type="edit" data-page-url="{{ url()->full() }}">
+    <?php
+        if( $show_header == true ){
+    ?>
+    <div  class="bg-light p-3 mb-3">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col ">
+                    <h5 class="font-weight-bold record-title">Edit Pengiriman</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+        }
+    ?>
+    <div  class="">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-9 comp-grid">
+                    <?php Html::display_page_errors($errors); ?>
+                    <div  class="card bg-light p-3 animated fadeIn page-content">
+                        <!--[form-start]-->
+                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("pengiriman/edit/$rec_id"); ?>" method="post">
+                        <!--[form-content-start]-->
+                        @csrf
+                        <div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="kd_transaksi">Kd Transaksi </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="ctrl-kd_transaksi-holder" class=" ">
+                                            <input id="ctrl-kd_transaksi"  value="<?php  echo $data['kd_transaksi']; ?>" type="number" placeholder="Enter Kd Transaksi" step="any"  name="kd_transaksi"  class="form-control " />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="ekspedisi">Ekspedisi <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="ctrl-ekspedisi-holder" class=" ">
+                                            <input id="ctrl-ekspedisi"  value="<?php  echo $data['ekspedisi']; ?>" type="text" placeholder="Enter Ekspedisi"  required="" name="ekspedisi"  class="form-control " />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="biaya">Biaya <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="ctrl-biaya-holder" class=" ">
+                                            <input id="ctrl-biaya"  value="<?php  echo $data['biaya']; ?>" type="number" placeholder="Enter Biaya" step="any"  required="" name="biaya"  class="form-control " />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="no_resi">No Resi <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="ctrl-no_resi-holder" class=" ">
+                                            <input id="ctrl-no_resi"  value="<?php  echo $data['no_resi']; ?>" type="text" placeholder="Enter No Resi"  required="" name="no_resi"  class="form-control " />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="status">Status </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="ctrl-status-holder" class=" ">
+                                            <input id="ctrl-status"  value="<?php  echo $data['status']; ?>" type="text" placeholder="Enter Status"  name="status"  class="form-control " />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="tgl_kirim">Tgl Kirim </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="ctrl-tgl_kirim-holder" class="input-group ">
+                                            <input id="ctrl-tgl_kirim" class="form-control datepicker  datepicker"  value="<?php  echo $data['tgl_kirim']; ?>" type="datetime" name="tgl_kirim" placeholder="Enter Tgl Kirim" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="material-icons">date_range</i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="catatan">Catatan </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="ctrl-catatan-holder" class=" ">
+                                            <input id="ctrl-catatan"  value="<?php  echo $data['catatan']; ?>" type="text" placeholder="Enter Catatan"  name="catatan"  class="form-control " />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="jenis_produk">Jenis Produk </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="ctrl-jenis_produk-holder" class=" ">
+                                            <input id="ctrl-jenis_produk"  value="<?php  echo $data['jenis_produk']; ?>" type="text" placeholder="Enter Jenis Produk"  name="jenis_produk"  class="form-control " />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="produk_edisi">Produk Edisi </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="ctrl-produk_edisi-holder" class=" ">
+                                            <input id="ctrl-produk_edisi"  value="<?php  echo $data['produk_edisi']; ?>" type="text" placeholder="Enter Produk Edisi"  name="produk_edisi"  class="form-control " />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="jumlah">Jumlah </label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="ctrl-jumlah-holder" class=" ">
+                                            <input id="ctrl-jumlah"  value="<?php  echo $data['jumlah']; ?>" type="number" placeholder="Enter Jumlah" step="any"  name="jumlah"  class="form-control " />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-ajax-status"></div>
+                        <!--[form-content-end]-->
+                        <!--[form-button-start]-->
+                        <div class="form-group text-center">
+                            <button class="btn btn-primary" type="submit">
+                            Update
+                            <i class="material-icons">send</i>
+                            </button>
+                        </div>
+                        <!--[form-button-end]-->
+                    </form>
+                    <!--[form-end]-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+@endsection
